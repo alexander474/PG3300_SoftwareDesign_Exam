@@ -1,0 +1,11 @@
+/home/alphonsesantoro/RiderProjects/LottasLopper/LottasLopper/bin/Debug/netcoreapp2.1/LottasLopper.deps.json
+/home/alphonsesantoro/RiderProjects/LottasLopper/LottasLopper/bin/Debug/netcoreapp2.1/LottasLopper.runtimeconfig.json
+/home/alphonsesantoro/RiderProjects/LottasLopper/LottasLopper/bin/Debug/netcoreapp2.1/LottasLopper.runtimeconfig.dev.json
+/home/alphonsesantoro/RiderProjects/LottasLopper/LottasLopper/bin/Debug/netcoreapp2.1/LottasLopper.dll
+/home/alphonsesantoro/RiderProjects/LottasLopper/LottasLopper/bin/Debug/netcoreapp2.1/LottasLopper.pdb
+/home/alphonsesantoro/RiderProjects/LottasLopper/LottasLopper/obj/Debug/netcoreapp2.1/LottasLopper.csprojAssemblyReference.cache
+/home/alphonsesantoro/RiderProjects/LottasLopper/LottasLopper/obj/Debug/netcoreapp2.1/LottasLopper.csproj.CoreCompileInputs.cache
+/home/alphonsesantoro/RiderProjects/LottasLopper/LottasLopper/obj/Debug/netcoreapp2.1/LottasLopper.AssemblyInfoInputs.cache
+/home/alphonsesantoro/RiderProjects/LottasLopper/LottasLopper/obj/Debug/netcoreapp2.1/LottasLopper.AssemblyInfo.cs
+/home/alphonsesantoro/RiderProjects/LottasLopper/LottasLopper/obj/Debug/netcoreapp2.1/LottasLopper.dll
+/home/alphonsesantoro/RiderProjects/LottasLopper/LottasLopper/obj/Debug/netcoreapp2.1/LottasLopper.pdb

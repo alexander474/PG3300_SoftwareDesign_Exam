@@ -1,0 +1,59 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/home/alphonsesantoro/RiderProjects/LottasLopper/LottasLopper/LottasLopper.csproj",
+    "projectName": "LottasLopper",
+    "projectPath": "/home/alphonsesantoro/RiderProjects/LottasLopper/LottasLopper/LottasLopper.csproj",
+    "outputPath": "/home/alphonsesantoro/RiderProjects/LottasLopper/LottasLopper/obj/",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp2.1"
+    ],
+    "frameworks": {
+      "netcoreapp2.1": {
+        "projectReferences": {}
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.1": {
+      "dependencies": {
+        "Microsoft.EntityFrameworkCore.Design": {
+          "target": "Package",
+          "version": "[2.1.4, )"
+        },
+        "Microsoft.EntityFrameworkCore.Sqlite": {
+          "target": "Package",
+          "version": "[2.1.4, )"
+        },
+        "Microsoft.EntityFrameworkCore.Sqlite.Core": {
+          "target": "Package",
+          "version": "[2.1.4, )"
+        },
+        "Microsoft.EntityFrameworkCore.Sqlite.Design": {
+          "target": "Package",
+          "version": "[1.1.6, )"
+        },
+        "Microsoft.NETCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.1.0, )",
+          "autoReferenced": true
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}
