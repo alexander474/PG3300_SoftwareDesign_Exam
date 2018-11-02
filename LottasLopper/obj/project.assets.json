@@ -2,6 +2,23 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
+      "Faker.NETCore/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.4.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/Faker.NETCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Faker.NETCore.dll": {}
+        },
+        "resource": {
+          "lib/netstandard1.6/de-DE/Faker.NETCore.resources.dll": {
+            "locale": "de-DE"
+          }
+        }
+      },
       "Microsoft.CSharp/4.5.0": {
         "type": "package",
         "compile": {
@@ -966,6 +983,17 @@
     }
   },
   "libraries": {
+    "Faker.NETCore/1.0.1": {
+      "sha512": "o5f6f+9RqM7G9Lz38qitdWxUdwxDcZh1Zu7eXj36OAerCckkvDjguNR+zju61SYaQcFMBUe/f6k9RxYjjEmLRg==",
+      "type": "package",
+      "path": "faker.netcore/1.0.1",
+      "files": [
+        "faker.netcore.1.0.1.nupkg.sha512",
+        "faker.netcore.nuspec",
+        "lib/netstandard1.6/Faker.NETCore.dll",
+        "lib/netstandard1.6/de-DE/Faker.NETCore.resources.dll"
+      ]
+    },
     "Microsoft.CSharp/4.5.0": {
       "sha512": "EGoBmf3Na2ppbhPePDE9PlX81r1HuOZH5twBrq7couJZiPTjUnD3648balerQJO6EJ8Sj+43+XuRwQ7r+3tE3w==",
       "type": "package",
@@ -3422,6 +3450,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "Faker.NETCore >= 1.0.1",
       "Microsoft.EntityFrameworkCore.Design >= 2.1.4",
       "Microsoft.EntityFrameworkCore.Sqlite >= 2.1.4",
       "Microsoft.EntityFrameworkCore.Sqlite.Core >= 2.1.4",
@@ -3468,6 +3497,10 @@
     "frameworks": {
       "netcoreapp2.1": {
         "dependencies": {
+          "Faker.NETCore": {
+            "target": "Package",
+            "version": "[1.0.1, )"
+          },
           "Microsoft.EntityFrameworkCore.Design": {
             "target": "Package",
             "version": "[2.1.4, )"
@@ -3497,5 +3530,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Faker.NETCore 1.0.1 depends on NETStandard.Library (>= 1.4.0) but NETStandard.Library 1.4.0 was not found. An approximate best match of NETStandard.Library 1.6.0 was resolved.",
+      "libraryId": "NETStandard.Library",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.1"
+      ]
+    }
+  ]
 }

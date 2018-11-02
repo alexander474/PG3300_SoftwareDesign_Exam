@@ -1,13 +1,14 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "5b0ed834a5d0a11b495aa63b18909970cc31da5d"
+    "signature": "34f61407c3f4d1361ec3426834ad02552f8b63de"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.1": {
       "LottasLopper/1.0.0": {
         "dependencies": {
+          "Faker.NETCore": "1.0.1",
           "Microsoft.EntityFrameworkCore.Design": "2.1.4",
           "Microsoft.EntityFrameworkCore.Sqlite": "2.1.4",
           "Microsoft.EntityFrameworkCore.Sqlite.Core": "2.1.4",
@@ -15,6 +16,19 @@
         },
         "runtime": {
           "LottasLopper.dll": {}
+        }
+      },
+      "Faker.NETCore/1.0.1": {
+        "runtime": {
+          "lib/netstandard1.6/Faker.NETCore.dll": {
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
+          }
+        },
+        "resources": {
+          "lib/netstandard1.6/de-DE/Faker.NETCore.resources.dll": {
+            "locale": "de-DE"
+          }
         }
       },
       "Microsoft.CSharp/4.5.0": {},
@@ -554,6 +568,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Faker.NETCore/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o5f6f+9RqM7G9Lz38qitdWxUdwxDcZh1Zu7eXj36OAerCckkvDjguNR+zju61SYaQcFMBUe/f6k9RxYjjEmLRg==",
+      "path": "faker.netcore/1.0.1",
+      "hashPath": "faker.netcore.1.0.1.nupkg.sha512"
     },
     "Microsoft.CSharp/4.5.0": {
       "type": "package",

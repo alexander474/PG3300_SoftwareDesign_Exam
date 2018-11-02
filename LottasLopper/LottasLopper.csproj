@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Faker.NETCore" Version="1.0.1" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.4" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.4" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="2.1.4" />

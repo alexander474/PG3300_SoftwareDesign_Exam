@@ -26,6 +26,10 @@
   "frameworks": {
     "netcoreapp2.1": {
       "dependencies": {
+        "Faker.NETCore": {
+          "target": "Package",
+          "version": "[1.0.1, )"
+        },
         "Microsoft.EntityFrameworkCore.Design": {
           "target": "Package",
           "version": "[2.1.4, )"
