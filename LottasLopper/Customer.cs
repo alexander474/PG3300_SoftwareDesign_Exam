@@ -12,7 +12,7 @@ namespace LottasLopper{
     public override void Action(int actions){
       while (Money > 0){
         if (_attempts >= 15){
-          Printer.print(Name + " could not find a product or was broke. " + Name + " went home.", ConsoleColor.Red);
+          Printer.print(String.Format("{0} could not find a product or was broke. {0} went home.", Name), ConsoleColor.Red);
           break;
         }
         lock (ProductController.list){
@@ -20,7 +20,7 @@ namespace LottasLopper{
           // No product available
           if (randomProduct == null){
             _attempts++;
-            Printer.print(Name + " is browsing for a new product... ", ConsoleColor.Gray);
+            Printer.print(String.Format("{0} is browsing for a new product... ", Name), ConsoleColor.Gray);
             Thread.Sleep(new Random().Next(200, 600));
             continue;
           };
@@ -36,9 +36,8 @@ namespace LottasLopper{
     private void AttemptToBuyProduct(Product randomProduct){
       if (ProductController.removeProduct(randomProduct)){
         Money -= randomProduct.Price;
-        Printer.print(Name + " bought product: " +
-                      randomProduct.Name + " for $" +
-                      randomProduct.Price, ConsoleColor.Yellow);
+        Printer.print(String.Format("{0} bought product: {1} for ${2}",
+            Name, randomProduct.Name, randomProduct.Price), ConsoleColor.Yellow);
         _attempts = 0;
       }
     }

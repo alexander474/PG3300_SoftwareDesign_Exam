@@ -2,19 +2,18 @@
 
 namespace Fleemarket {
     class ProductController{
+        +List<Product> list
+        ---
         +getProduct() : Database.ProductContext
         +getRandomProduct() : Database.ProductContext
         +newProduct() : boolean
     }
     
     ProductController --o Product
-    ProductController --o Person
     
-    class ConsoleView {
+    class Printer {
         print(value : string) : void
     }
-    
-    ProductController --* ConsoleView
     
     abstract Class Person {
         {abstract} action() : void
@@ -25,16 +24,16 @@ namespace Fleemarket {
         -newProduct() : Product
     }
     
-    Seller --* ProductController
+    Seller --o ProductController
+    Seller --- Printer : Uses
     
     class Customer extends Person {
         +action() : void
         -buyProduct() : Product
     }
     
-    Customer --* ProductController
-        
-    Person "1" --- "0..*" Product
+    Customer --o ProductController
+    Customer --- Printer : Uses
         
     class Product {
         name : string
@@ -45,6 +44,9 @@ namespace Fleemarket {
         +CreateSellers(int numberOfSellers)
         +CreateCustomers(int numberOfSellers)
     }
+    
+    PersonFactory --- Seller : Creates
+    PersonFactory --- Customer : Creates
 }
 
 @enduml
