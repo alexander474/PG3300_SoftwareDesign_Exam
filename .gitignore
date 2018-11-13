@@ -4,8 +4,8 @@
 
 # Added self
 
-bin/
-obj/
+LottasLopper/bin
+LottasLopper/obj
 
 #End added self
 
