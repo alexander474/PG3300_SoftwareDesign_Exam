@@ -1,4 +1,4 @@
-using Faker;
+using System;
 
 namespace LottasLopper{
   public class Product{
@@ -12,7 +12,7 @@ namespace LottasLopper{
 
     public Product(){
       Name = new Bogus.Faker().Commerce.ProductName();
-      Price = RandomNumber.Next(200, 1000);
+      Price = new Random().Next(200, 1000);
     }
   }
 }

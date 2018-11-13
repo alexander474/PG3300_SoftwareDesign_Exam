@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Faker;
 
 namespace LottasLopper{
   public class ProductController{
@@ -11,7 +10,7 @@ namespace LottasLopper{
     public static Product getRandomProduct(){
       try{
         if (list.Any()){
-          return list[RandomNumber.Next(0, list.Count)];
+          return list[new Random().Next(0, list.Count)];
         }
       }
       catch (InvalidOperationException){

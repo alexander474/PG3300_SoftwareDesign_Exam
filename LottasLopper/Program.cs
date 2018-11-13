@@ -1,5 +1,4 @@
 ﻿using System;
-using Faker;
 
 namespace LottasLopper{
   class Program{

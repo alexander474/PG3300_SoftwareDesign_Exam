@@ -1,5 +1,4 @@
 using System.Threading;
-using Faker;
 
 namespace LottasLopper{
   public class PersonFactory{

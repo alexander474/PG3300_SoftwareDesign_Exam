@@ -1,13 +1,12 @@
 using System;
 using System.Linq;
 using System.Threading;
-using Faker;
 
 namespace LottasLopper{
   public class Customer : Person{
     private int _attempts = 0;
     
-    public Customer() : base(Faker.Name.FullName(), RandomNumber.Next(1000, 10_000)){
+    public Customer() : base(new Bogus.Faker().Name.FullName(), new Random().Next(1000, 10_000)){
     }
 
     public override void Action(int actions){
@@ -22,7 +21,7 @@ namespace LottasLopper{
           if (randomProduct == null){
             _attempts++;
             Printer.print(Name + " is browsing for a new product... ", ConsoleColor.Gray);
-            Thread.Sleep(RandomNumber.Next(200, 600));
+            Thread.Sleep(new Random().Next(200, 600));
             continue;
           };
           // attempt to buy product if there is enough money
@@ -30,7 +29,7 @@ namespace LottasLopper{
             AttemptToBuyProduct(randomProduct);
           }
         }
-        Thread.Sleep(RandomNumber.Next(200, 600));
+        Thread.Sleep(new Random().Next(200, 600));
       }
     }
 

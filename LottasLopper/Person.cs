@@ -1,6 +1,3 @@
-using System;
-using Faker;
-
 namespace LottasLopper{
   public abstract class Person{
     public string Name{ get; set; }
