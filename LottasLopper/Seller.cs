@@ -11,8 +11,7 @@ namespace LottasLopper{
       for (int i = 0; i < actions; i++){
         var newProduct = new Product();
         new ProductController().addToList(newProduct);
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Seller " + Name + ", added product: " + newProduct.Name + " for $" + newProduct.Price);
+        Printer.print("Seller " + Name + ", added product: " + newProduct.Name + " for $" + newProduct.Price, ConsoleColor.Red);
         Thread.Sleep(RandomNumber.Next(1000, 2000));
       }
     }

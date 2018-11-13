@@ -13,14 +13,13 @@ namespace LottasLopper{
       while (Money > 0 || ProductController.list.Any()){
         var randomProduct = ProductController.getRandomProduct();
         if(randomProduct == null) continue;
-        lock (randomProduct){
-          ProductController.list.Remove(randomProduct);
+        lock (ProductController.list){
+          ProductController.removeProduct(randomProduct);
           if (Money > randomProduct.Price){
             Money -= randomProduct.Price;
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(Name + " bought product: " +
-                              randomProduct.Name + " for $" +
-                              randomProduct.Price);
+            Printer.print(Name + " bought product: " +
+                          randomProduct.Name + " for $" +
+                          randomProduct.Price, ConsoleColor.Yellow);
           }
         }
         Thread.Sleep(RandomNumber.Next(200, 600));

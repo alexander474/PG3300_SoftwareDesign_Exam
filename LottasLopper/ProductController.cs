@@ -5,6 +5,7 @@ using Faker;
 
 namespace LottasLopper{
   public class ProductController{
+    public static readonly object _product = new Object();
     public static List<Product> list = new List<Product>();
     
     public static Product getRandomProduct(){
@@ -21,6 +22,12 @@ namespace LottasLopper{
 
     public void addToList(Product product){
       list.Add(product);
+    }
+
+    public static void removeProduct(Product product){
+      lock (_product){
+        list.Remove(product);
+      }
     }
   }
 }
