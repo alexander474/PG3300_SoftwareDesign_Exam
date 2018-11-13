@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace LottasLopper.Migrations.Person
+namespace LottasLopper.Migrations
 {
     [DbContext(typeof(ModelContext))]
-    [Migration("20181102125616_PersonModel")]
-    partial class PersonModel
+    [Migration("20181113113119_CreateTables")]
+    partial class CreateTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -17,7 +17,7 @@ namespace LottasLopper.Migrations.Person
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024");
 
-            modelBuilder.Entity("LottasLopper.Product.Person", b =>
+            modelBuilder.Entity("LottasLopper.Models.Person", b =>
                 {
                     b.Property<int>("PersonId")
                         .ValueGeneratedOnAdd();
@@ -28,7 +28,21 @@ namespace LottasLopper.Migrations.Person
 
                     b.HasKey("PersonId");
 
-                    b.ToTable("Persons");
+                    b.ToTable("Person");
+                });
+
+            modelBuilder.Entity("LottasLopper.Models.Product", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("Price");
+
+                    b.HasKey("ProductId");
+
+                    b.ToTable("Product");
                 });
 #pragma warning restore 612, 618
         }

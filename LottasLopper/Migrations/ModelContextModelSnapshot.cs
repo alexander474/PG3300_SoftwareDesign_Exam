@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LottasLopper.Migrations
 {
     [DbContext(typeof(ModelContext))]
-    partial class ProductContextModelSnapshot : ModelSnapshot
+    partial class ModelContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
