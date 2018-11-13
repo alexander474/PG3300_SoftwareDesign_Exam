@@ -2,41 +2,26 @@ using System;
 using System.Linq;
 using System.Threading;
 using Faker;
-using LottasLopper.Models;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
 
 namespace LottasLopper{
   public class Customer : Person{
+
+    public Customer() : base(Faker.Name.FullName(), RandomNumber.Next(1000, 3000)){
+    }
+    
     public override void Action(int actions){
-      ModelContext modelContext = new ModelContext();
-      Models.Person person = new Models.Person(Faker.Name.FullName(), RandomNumber.Next(5_000, 10_000));
-      modelContext.Add(person);
-      while (person.Money > 0 || modelContext.Product.Any()){
-        var randomProduct = new ProductController().getRandomProduct();
+      while (Money > 0 || ProductController.list.Any()){
+        var randomProduct = ProductController.getRandomProduct();
         if(randomProduct == null) continue;
-        try{
-          lock (randomProduct){
-            modelContext.Remove(randomProduct);
-            try{
-              if (modelContext.SaveChanges() > 1 && person.Money > randomProduct.Price){
-                person.Money -= randomProduct.Price;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(person.Name + " bought product #" + randomProduct.ProductId + " " +
-                                  randomProduct.Name + " for $" +
-                                  randomProduct.Price);
-              }
-            }
-            catch (DbUpdateConcurrencyException e){
-              continue;
-            }
-            catch (SqliteException e){
-              continue;
-            }
+        lock (randomProduct){
+          ProductController.list.Remove(randomProduct);
+          if (Money > randomProduct.Price){
+            Money -= randomProduct.Price;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(Name + " bought product: " +
+                              randomProduct.Name + " for $" +
+                              randomProduct.Price);
           }
-        }
-        catch (InvalidOperationException e){
-          continue;
         }
         Thread.Sleep(RandomNumber.Next(200, 600));
       }

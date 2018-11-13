@@ -1,23 +1,18 @@
 using System;
 using System.Threading;
 using Faker;
-using LottasLopper.Models;
 
 namespace LottasLopper{
   public class Seller : Person{
-    public Seller(){
+    public Seller() : base(Faker.Name.FullName(), 0){
     }
 
     public override void Action(int actions){
-      ModelContext modelContext = new ModelContext();
       for (int i = 0; i < actions; i++){
-        Models.Person person = new Models.Person(Faker.Name.FullName(), 0);
-        var newProduct = new Product(Faker.Internet.DomainName(), RandomNumber.Next(200, 1000));
-        modelContext.Add(newProduct);
-        modelContext.SaveChanges();
+        var newProduct = new Product();
+        new ProductController().addToList(newProduct);
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Seller " + person.Name + 
-                          " added product: #" + newProduct.ProductId + " " + newProduct.Name + " for $" + newProduct.Price);
+        Console.WriteLine("Seller " + Name + ", added product: " + newProduct.Name + " for $" + newProduct.Price);
         Thread.Sleep(RandomNumber.Next(1000, 2000));
       }
     }

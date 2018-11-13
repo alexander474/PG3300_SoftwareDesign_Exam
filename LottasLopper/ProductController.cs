@@ -1,28 +1,26 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using Faker;
-using LottasLopper.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 
 namespace LottasLopper{
   public class ProductController{
+    public static List<Product> list = new List<Product>();
     
-    // Find product by id
-    public Product getProduct(int id){
-      return new ModelContext().Find<Models.Product>(id);
-    }
-    
-    
-    // Get Random product
-    public Product getRandomProduct(){
-      DbSet<Product> allProducts = new ModelContext().Product;
-      if (allProducts.Any()){
-        return allProducts.OrderBy(o => Guid.NewGuid()).FirstOrDefault();
+    public static Product getRandomProduct(){
+      try{
+        if (list.Any()){
+          return list[RandomNumber.Next(0, list.Count)];
+        }
+      }
+      catch (InvalidOperationException){
+        return null;
       }
       return null;
+    }
+
+    public void addToList(Product product){
+      list.Add(product);
     }
   }
 }

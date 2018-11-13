@@ -3,10 +3,15 @@ using Faker;
 
 namespace LottasLopper{
   public abstract class Person{
-    public Person(){
+    public string Name{ get; set; }
+    public int Money{ get; set; }
+
+    public Person(string name, int money){
+      Name = name;
+      Money = money;
       Action(RandomNumber.Next(50, 200));
     }
-    
+
     public abstract void Action(int actions);
   }
 }
