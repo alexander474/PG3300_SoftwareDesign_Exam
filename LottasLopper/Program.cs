@@ -6,8 +6,8 @@ namespace LottasLopper{
 
     static void Main(string[] args){
       PersonFactory factory = new PersonFactory();
-      factory.CreateSellers(10);
-      factory.CreateCustomers(50);
+      factory.CreateSellers(1);
+      factory.CreateCustomers(3);
     }
   }
 }

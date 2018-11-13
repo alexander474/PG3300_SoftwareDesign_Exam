@@ -24,9 +24,9 @@ namespace LottasLopper{
       list.Add(product);
     }
 
-    public static void removeProduct(Product product){
+    public static bool removeProduct(Product product){
       lock (_product){
-        list.Remove(product);
+        return list.Remove(product);
       }
     }
   }

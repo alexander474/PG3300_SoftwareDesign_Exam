@@ -9,7 +9,7 @@ namespace LottasLopper{
     public Person(string name, int money){
       Name = name;
       Money = money;
-      Action(RandomNumber.Next(50, 200));
+      Action(10);
     }
 
     public abstract void Action(int actions);
