@@ -1,8 +1,5 @@
 ﻿using System;
 using Faker;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace LottasLopper{
   class Program{
