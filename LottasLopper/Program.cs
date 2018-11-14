@@ -4,7 +4,7 @@ namespace LottasLopper {
 	class Program {
 
 		static void Main(string[] args) {
-			PersonFactory factory = new PersonFactory();
+			var factory = new PersonFactory();
 			factory.CreateSellers(1);
 			factory.CreateCustomers(3);
 		}
