@@ -8,6 +8,8 @@ namespace LottasLopper {
 		public static void Print(string text, ConsoleColor color) {
 			lock(_console) {
 				Console.SetCursorPosition(0, _lastPos);
+				Console.Write(new string(' ', Console.WindowWidth)); //Clear a single line in console
+				Console.SetCursorPosition(0, _lastPos);
 				Console.ForegroundColor = color;
 				Console.WriteLine(text);
 				_lastPos = Console.CursorTop;
@@ -23,7 +25,13 @@ namespace LottasLopper {
 			}
 
 			Console.ForegroundColor = ConsoleColor.Green;
-			Console.Write(String.Format("{0} / {1} items sold, ${2} earnd so far.", Stats.ItemsSold, Stats.ItemsListed, Stats.TotalEarnings));
+			Console.Write(String.Format("{0} / {1} items sold - ${2} earend so far - {3} sellers active - {4} buyers active",
+				Stats.ItemsSold,
+				Stats.ItemsListed,
+				Stats.TotalEarnings,
+				Stats.SellersActive,
+				Stats.BuyersActive
+			));
 		}
 	}
 }

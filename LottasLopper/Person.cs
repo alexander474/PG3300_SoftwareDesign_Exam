@@ -8,7 +8,7 @@ namespace LottasLopper {
 		public Person(string name, int money) {
 			Name = name;
 			Money = money;
-			Action(10);
+			Action(3);
 		}
 
 		public abstract void Action(int actions);
