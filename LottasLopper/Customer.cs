@@ -7,6 +7,7 @@ namespace LottasLopper {
 	public class Customer : Person {
 		private int _attempts = 0;
 
+        // Creates a customer with a random name and a wallet with currency between 1000 and 10_000.
 		public Customer() : base(new Bogus.Faker().Name.FullName(), new Random().Next(1000, 10_000)) {
 		}
 

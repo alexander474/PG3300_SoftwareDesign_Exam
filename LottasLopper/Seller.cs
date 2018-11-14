@@ -3,7 +3,9 @@ using System.Threading;
 
 namespace LottasLopper {
 	public class Seller : Person {
-		public Seller() : base(new Bogus.Faker().Name.FullName(), 0) {
+
+	    // Creates a seller with a random name and a wallet with currency of 0.
+        public Seller() : base(new Bogus.Faker().Name.FullName(), 0) {
 		}
 
 		public override void Action(int actions) {
