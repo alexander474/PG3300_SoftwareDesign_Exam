@@ -1,27 +1,27 @@
 using System.Threading;
 using Faker;
 
-namespace LottasLopper{
-  public class PersonFactory{
+namespace LottasLopper {
+	public class PersonFactory {
 
-    public void CreateSellers(int numberOfSellers){
-      for (int i = 0; i < numberOfSellers; i++){
-        new Thread(newSeller).Start();
-      }
-    }
-    
-    public void CreateCustomers(int numberOfCustomers){
-      for (int i = 0; i < numberOfCustomers; i++){
-        new Thread(newCustomer).Start();
-      }
-    }
+		public void CreateSellers(int numberOfSellers) {
+			for(int i = 0; i < numberOfSellers; i++) {
+				new Thread(NewSeller).Start();
+			}
+		}
 
-    void newSeller(){
-      new Seller();
-    }
+		public void CreateCustomers(int numberOfCustomers) {
+			for(int i = 0; i < numberOfCustomers; i++) {
+				new Thread(NewCustomer).Start();
+			}
+		}
 
-    void newCustomer(){
-      new Customer();
-    }
-  }
+		void NewSeller() {
+			new Seller();
+		}
+
+		void NewCustomer() {
+			new Customer();
+		}
+	}
 }

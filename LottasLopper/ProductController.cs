@@ -3,31 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using Faker;
 
-namespace LottasLopper{
-  public class ProductController{
-    public static readonly object _product = new Object();
-    public static List<Product> list = new List<Product>();
-    
-    public static Product getRandomProduct(){
-      try{
-        if (list.Any()){
-          return list[RandomNumber.Next(0, list.Count)];
-        }
-      }
-      catch (InvalidOperationException){
-        return null;
-      }
-      return null;
-    }
+namespace LottasLopper {
+	public class ProductController {
+		private static readonly object _product = new Object();
+		public static List<Product> list = new List<Product>();
 
-    public void addToList(Product product){
-      list.Add(product);
-    }
+		public static Product getRandomProduct() {
+			lock(_product) {
+				try {
+					if(list.Any()) {
+						return list[RandomNumber.Next(0, list.Count)];
+					}
+				} catch(InvalidOperationException) {
+					return null;
+				}
+				return null;
+			}
+		}
 
-    public static void removeProduct(Product product){
-      lock (_product){
-        list.Remove(product);
-      }
-    }
-  }
+		public void AddToList(Product product) {
+			list.Add(product);
+		}
+
+		public static void RemoveProduct(Product product) {
+			lock(_product) {
+				list.Remove(product);
+			}
+		}
+	}
 }
