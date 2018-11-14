@@ -12,9 +12,11 @@ namespace LottasLopper {
 			for(int i = 0; i < actions; i++) {
 				var newProduct = new Product();
 				new ProductController().AddToList(newProduct);
+				Stats.ItemsListed++;
 				Printer.Print(String.Format("Seller {0} added product: {1} for ${2}", Name, newProduct.Name, newProduct.Price), ConsoleColor.Red);
 				Thread.Sleep(new Random().Next(1000, 2000));
 			}
+			Printer.Print(String.Format("Seller {0} has no more items to sell, and is going home", Name), ConsoleColor.Cyan);
 		}
 	}
 }

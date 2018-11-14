@@ -13,7 +13,7 @@ namespace LottasLopper {
 
 		public override void Action(int actions) {
 			while(Money > 0) {
-				if(_attempts >= 15) {
+				if(_attempts >= 10) {
 					Printer.Print(String.Format("{0} could not find a product or was broke. {0} went home.", Name), ConsoleColor.Red);
 					break;
 				}
