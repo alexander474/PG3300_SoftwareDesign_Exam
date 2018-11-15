@@ -5,9 +5,9 @@ namespace LottasLopper {
 		public string Name { get; set; }
 		public int Price { get; set; }
 
-		public Product() {
+		public Product(int price) {
 			Name = new Bogus.Faker().Commerce.ProductName();
-			Price = new Random().Next(200, 1000);
+			Price = price;
 		}
 	}
 }

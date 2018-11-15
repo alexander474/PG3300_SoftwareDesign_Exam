@@ -16,7 +16,6 @@ namespace LottasLopper {
 				} catch(InvalidOperationException) {
 					return null;
 				}
-
 				return null;
 			}
 		}

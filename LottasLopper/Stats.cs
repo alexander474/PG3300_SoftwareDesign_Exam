@@ -11,6 +11,5 @@ namespace LottasLopper {
 		public static int SellersActive { get; set; }
 		public static int BuyersActive { get; set; }
 
-
 	}
 }

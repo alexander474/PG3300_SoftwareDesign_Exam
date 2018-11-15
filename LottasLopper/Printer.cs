@@ -17,11 +17,11 @@ namespace LottasLopper {
 			}
 		}
 
-		private static void PrintStats() {
+		public static void PrintStats() {
 			if(_lastPos >= Console.WindowHeight) {
 				Console.SetCursorPosition(0, _lastPos);
 			} else {
-				Console.SetCursorPosition(0, Console.WindowHeight);
+				Console.SetCursorPosition(0, Console.WindowHeight -1);
 			}
 
 			Console.ForegroundColor = ConsoleColor.Green;

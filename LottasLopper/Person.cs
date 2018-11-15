@@ -2,13 +2,15 @@ using System;
 
 namespace LottasLopper {
 	public abstract class Person {
-		public string Name { get; set; }
-		public int Money { get; set; }
+		protected string Name { get; set; }
+		protected int Money { get; set; }
+		protected float WaitTime { get; set; }
 
-		public Person(string name, int money) {
+		public Person(string name, int actions, int money = 0) {
 			Name = name;
 			Money = money;
-			Action(3);
+			WaitTime = Settings.WaitingScale;
+			Action(actions);
 		}
 
 		public abstract void Action(int actions);

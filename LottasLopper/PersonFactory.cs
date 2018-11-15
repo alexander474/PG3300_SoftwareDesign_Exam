@@ -5,6 +5,7 @@ namespace LottasLopper {
 
 		public void CreateSellers(int numberOfSellers) {
 			for(int i = 0; i < numberOfSellers; i++) {
+				Thread.Sleep(200);
 				Stats.SellersActive++;
 				new Thread(NewSeller).Start();
 			}
@@ -12,6 +13,7 @@ namespace LottasLopper {
 
 		public void CreateCustomers(int numberOfCustomers) {
 			for(int i = 0; i < numberOfCustomers; i++) {
+				Thread.Sleep(100);
 				Stats.BuyersActive++;
 				new Thread(NewCustomer).Start();
 			}
