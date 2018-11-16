@@ -19,7 +19,7 @@ namespace LottasLopper {
 				_sleepTime = new Random().Next(100, 400);
 				lock(_lock) {
 					if(_attempts >= actions || Money < Settings.MinPrice) {
-						Printer.Print(String.Format("{0} could not find a product or was broke. {0} went home. Had ${1} left", Name, Money), ConsoleColor.DarkCyan);
+						Printer.Print(String.Format("{0} couldn't find a product or was broke. {0} went home. Had ${1} left", Name, Money), ConsoleColor.DarkCyan);
 						Stats.BuyersActive--;
 						running = false;
 						continue;
@@ -49,7 +49,7 @@ namespace LottasLopper {
 			
 		}
 
-		private void AttemptToBuyProduct(Product randomProduct) {
+		private void AttemptToBuyProduct(IProduct randomProduct) {
 			if(ProductController.RemoveProduct(randomProduct)) {
 				// Did manage to buy product,
 				// set attempts to 0 because the customer is satisfied and wants to shop more
