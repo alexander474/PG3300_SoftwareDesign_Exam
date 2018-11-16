@@ -25,9 +25,7 @@ namespace LottasLopper {
 		}
 
 		public static bool RemoveProduct(Product product) {
-			lock(_product) {
-				return list.Remove(product);
-			}
+			return list.Remove(product);
 		}
 	}
 }
