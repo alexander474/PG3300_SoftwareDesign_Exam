@@ -1,0 +1,57 @@
+﻿@startuml
+namespace Database {
+    class PersonContext {
+        id  : int
+        name : string
+        seller : boolean
+        money : int
+    }
+    
+    PersonContext "1" - - - "0..*" ProductContext
+    
+    class ProductContext {
+        id : int
+        name : string
+        price : int
+    }
+}
+
+namespace Fleemarket {
+    class ProductController{
+        +getProduct() : Database.ProductContext
+        +getRandomProduct() : Database.ProductContext
+        +newProduct() : boolean
+    }
+    
+    ProductController - -o Database.ProductContext
+    ProductController - -o Database.PersonContext
+    
+    class ConsoleView {
+        print(value : string) : void
+    }
+    
+    ProductController - -* ConsoleView
+    
+    interface Person {
+        {abstract} action() : void
+    }
+    
+    class Seller implements Person {
+        +action() : void
+        -newProduct() : Database.ProductContext
+    }
+    
+    Seller - -* ProductController
+    
+    class Customer implements Person {
+        +action() : void
+        -buyProduct() : Database.ProductContext
+    }
+    
+    Customer - -* ProductController
+    
+    class Market {
+    
+    }
+}
+@enduml
