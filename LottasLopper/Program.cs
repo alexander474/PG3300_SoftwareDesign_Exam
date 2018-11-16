@@ -4,10 +4,14 @@ using System.Threading;
 namespace LottasLopper {
 	class Program {
 
+		private static PersonFactory _factory = new PersonFactory();
+
 		static void Main(string[] args) {
-			var factory = new PersonFactory();
-			factory.CreateSellers(1);
-			factory.CreateCustomers(20);
+
+			new Thread(StartCreatingSellers).Start();
+			Thread.Sleep(1000);
+			new Thread(StartCreatingCustomers).Start();
+			
 			bool _hasPrinted = false;
 			while(true) {
 				if(Stats.SellersActive == 0 && Stats.BuyersActive == 0 && !_hasPrinted) {
@@ -25,6 +29,14 @@ namespace LottasLopper {
 						break;
 				}
 			}
+		}
+
+		private static void StartCreatingSellers() {
+			_factory.CreateSellers(200);
+		}
+
+		private static void StartCreatingCustomers() {
+			_factory.CreateCustomers(50);
 		}
 	}
 }
