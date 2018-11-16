@@ -28,17 +28,35 @@ namespace LottasLopper {
 			return list.Remove(product);
 		}
 
-		public IProduct generateRandomDecorated(Product product){
-			switch (new Random().Next(0, 4)){
-					case 0:
-						return new ImprovedProductDecorator(product);
-					case 1:
-						return new ColoredProductDecorator(product);
-					case 2:
-						return new MaterialProductDecorator(product);
-					default:
-						return product;
+		public IProduct GenerateRandomDecorated(IProduct product){
+			int i = 0;
+			int numberOfDecorations = new Random().Next(0, 4);
+			IProduct _product = product;
+			while (i++ < numberOfDecorations){
+				_product = DecorateProduct(_product);
 			}
+
+			return _product;
+		}
+
+		private IProduct DecorateProduct(IProduct product){
+			switch (new Random().Next(0, 4)){
+				case 0:
+					if (IsDecoratedWith(product, "Improved")) return product;
+					return new ImprovedProductDecorator(product);
+				case 1:
+					if (IsDecoratedWith(product, "Colored")) return product;
+					return new ColoredProductDecorator(product);
+				case 2:
+					if (IsDecoratedWith(product, "Material")) return product;
+					return new MaterialProductDecorator(product);
+				default:
+					return product;
+			}
+		}
+
+		private bool IsDecoratedWith(IProduct product, string decorator){
+			return product.DecoratedWith.Contains(decorator);
 		}
 	}
 }

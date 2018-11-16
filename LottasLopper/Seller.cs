@@ -16,7 +16,7 @@ namespace LottasLopper {
 						Printer.Print(String.Format("Seller {0} has no more items to sell, and is going home", Name), ConsoleColor.Cyan);
 						break;
 					}
-					var newProduct = new ProductController().generateRandomDecorated(new Product(new Random().Next(Settings.MinPrice, Settings.MaxPrice)));
+					var newProduct = new ProductController().GenerateRandomDecorated(new Product(new Random().Next(Settings.MinPrice, Settings.MaxPrice)));
 					new ProductController().AddToList(newProduct);
 					Stats.ItemsListed++;
 					Printer.Print(String.Format("Seller {0} added product: {1} for ${2}", Name, newProduct.Name, newProduct.Price), ConsoleColor.Red);
