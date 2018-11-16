@@ -1,0 +1,51 @@
+﻿@startuml
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+skinparam maxmessagesize 60
+skinparam sequenceParticipant underline
+
+participant "Person Factory" as A
+actor Customer
+participant "Product" as B
+participant "Wallet" as C
+participant "Market" as D
+
+A -> Customer: Create Customer
+activate Customer
+
+loop
+
+    Customer -> B: Find Product
+    activate B
+    
+    B -> C: Check Moneycount
+    activate C
+    
+    C -> D: Buy Product
+    activate D
+    
+    D --> C: Buying Complete
+    deactivate D
+    
+    C --> B: Get Product
+    deactivate C
+    
+    alt Can buy new product
+    
+        B --> Customer: Find new Product
+    
+    else Can't buy new product
+    
+        B --> Customer: Go home
+        deactivate B
+    
+    end
+    
+end
+
+Customer --> A: Customer Finished
+deactivate A
+
+deactivate Customer
+
+@enduml

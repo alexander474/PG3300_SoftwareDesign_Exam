@@ -1,0 +1,34 @@
+﻿@startuml
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+skinparam maxmessagesize 60
+skinparam sequenceParticipant underline
+
+participant "Person Factory" as A
+actor Seller
+participant "Product" as B
+participant "Market" as C
+
+A -> Seller: Create Seller
+activate Seller
+
+loop
+    Seller -> B: Create Product
+    activate B
+    
+    B -> C: List Product
+    activate C
+    
+    C --> B: List Complete
+    deactivate C
+    
+    B --> Seller: Product Listed
+    deactivate B
+end
+
+Seller --> A: Seller Finished
+deactivate A
+
+deactivate Seller
+
+@enduml

@@ -7,7 +7,7 @@ namespace LottasLopper {
 		private static PersonFactory _factory = new PersonFactory();
 
 		static void Main(string[] args) {
-
+			Console.CursorVisible = false;
 			new Thread(StartCreatingSellers).Start();
 			Thread.Sleep(1000);
 			new Thread(StartCreatingCustomers).Start();

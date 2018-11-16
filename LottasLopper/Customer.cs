@@ -18,7 +18,7 @@ namespace LottasLopper {
 			while(running) {
 				_sleepTime = new Random().Next(100, 400);
 				lock(_lock) {
-					if(_attempts >= actions || Money < 200) {
+					if(_attempts >= actions || Money < Settings.MinPrice) {
 						Printer.Print(String.Format("{0} could not find a product or was broke. {0} went home. Had ${1} left", Name, Money), ConsoleColor.DarkCyan);
 						Stats.BuyersActive--;
 						running = false;
@@ -27,15 +27,20 @@ namespace LottasLopper {
 					var randomProduct = ProductController.GetRandomProduct();
 					// No product available
 					if(randomProduct == null) {
+						// Add 1 to attempts and sleep for a bit before trying again
 						_attempts++;
 						Printer.Print(String.Format("{0} is browsing for a new product... ", Name), ConsoleColor.Gray);
 						_sleepTime = new Random().Next(800, 1200);
-						//Thread.Sleep(new Random().Next(500, 1000));
 					} else if(Money < randomProduct.Price) {
+						// Add 1 to attempts and sleep for a bit before trying again
 						_attempts++;
-						Printer.Print(String.Format("{0} tried to buy product {1}, but dint have enought money...  ", Name, randomProduct.Name), ConsoleColor.Gray);
+						Printer.Print(String.Format("{0} tried to buy product {1}, but was missing ${2}",
+							Name,
+							randomProduct.Name,
+							randomProduct.Price - Money),
+							ConsoleColor.Gray);
 					} else {
-						// attempt to buy product if there is enough money
+						// Attempt to buy product
 						AttemptToBuyProduct(randomProduct);
 					}
 				}
@@ -46,6 +51,8 @@ namespace LottasLopper {
 
 		private void AttemptToBuyProduct(Product randomProduct) {
 			if(ProductController.RemoveProduct(randomProduct)) {
+				// Did manage to buy product,
+				// set attempts to 0 because the customer is satisfied and wants to shop more
 				Money -= randomProduct.Price;
 				Stats.ItemsSold++;
 				Stats.TotalEarnings += randomProduct.Price;

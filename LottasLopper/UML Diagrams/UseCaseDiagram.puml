@@ -1,0 +1,22 @@
+﻿@startuml
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor Customer
+actor Seller
+
+rectangle Market {
+	Seller --> (Sell product)
+	Customer --> (Buy product)
+	(Buy product) ..> (Product list)
+	(Sell product) ..> (Product list)
+}
+
+rectangle Console {
+	(Buy product) .> (Write result)
+	(Sell product) .> (Write result)
+}
+
+
+@enduml
