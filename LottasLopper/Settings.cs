@@ -8,7 +8,7 @@ namespace LottasLopper {
 		public static int SellerActions {
 			get { return 5; }
 		}
-		public static int BuyerActions {
+		public static int CustomerActions {
 			get { return 10; }
 		}
 		#endregion
@@ -34,7 +34,7 @@ namespace LottasLopper {
 		public static int CustomerCount {
 			get { return 50; }
 		}
-		public static int SellersCount {
+		public static int SellerCount {
 			get { return 200; }
 		}
 		#endregion

@@ -10,7 +10,7 @@ namespace LottasLopper {
 		private int _attempts = 0;
 
         // Creates a customer with a random name and a wallet with currency between 1000 and 10_000.
-		public Customer() : base(new Bogus.Faker().Name.FullName(), Settings.BuyerActions,
+		public Customer() : base(new Bogus.Faker().Name.FullName(), Settings.CustomerActions,
 								new Random().Next(Settings.MinMoney, Settings.MaxMoney)) {}
 
 		public override void Action(int actions) {

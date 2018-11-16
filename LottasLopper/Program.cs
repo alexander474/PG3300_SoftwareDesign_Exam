@@ -32,11 +32,11 @@ namespace LottasLopper {
 		}
 
 		private static void StartCreatingSellers() {
-			_factory.CreateSellers(200);
+			_factory.CreateSellers(Settings.SellerCount);
 		}
 
 		private static void StartCreatingCustomers() {
-			_factory.CreateCustomers(50);
+			_factory.CreateCustomers(Settings.CustomerCount);
 		}
 	}
 }
