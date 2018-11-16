@@ -8,14 +8,15 @@ namespace LottasLopper{
             var customer = new Customer();
             Assert.IsNotNull(customer.Money);
             Assert.IsNotNull(customer.Name);
-            Assert.Greater(customer.Money,0);
         }
 
         [Test]
-        public void ShouldFail() {
+        public void ShouldHaveMoreMoneyThanZero() {
             var customer = new Customer();
-            Assert.Equals(customer.Money, 0);
+            Assert.Greater(customer.Money, 0);
         }
+
+
 
     }
 }
