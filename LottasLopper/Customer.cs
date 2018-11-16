@@ -6,18 +6,20 @@ using System.Threading;
 namespace LottasLopper {
 	public class Customer : Person {
 		private static readonly object _lock = new Object();
+		private int _sleepTime;
 		private int _attempts = 0;
 
         // Creates a customer with a random name and a wallet with currency between 1000 and 10_000.
-		public Customer() : base(new Bogus.Faker().Name.FullName(), Settings.BuyerActions, new Random().Next(500, 5_000)) {}
+		public Customer() : base(new Bogus.Faker().Name.FullName(), Settings.BuyerActions,
+								new Random().Next(Settings.MinMoney, Settings.MaxMoney)) {}
 
 		public override void Action(int actions) {
 			bool running = true;
 			while(running) {
-				Thread.Sleep((int) Math.Floor(new Random().Next(1000, 1200) * WaitTime));
+				_sleepTime = new Random().Next(100, 400);
 				lock(_lock) {
 					if(_attempts >= actions || Money < 200) {
-						Printer.Print(String.Format("{0} could not find a product or was broke. {0} went home.", Name), ConsoleColor.DarkCyan);
+						Printer.Print(String.Format("{0} could not find a product or was broke. {0} went home. Had ${1} left", Name, Money), ConsoleColor.DarkCyan);
 						Stats.BuyersActive--;
 						running = false;
 						continue;
@@ -27,14 +29,17 @@ namespace LottasLopper {
 					if(randomProduct == null) {
 						_attempts++;
 						Printer.Print(String.Format("{0} is browsing for a new product... ", Name), ConsoleColor.Gray);
+						_sleepTime = new Random().Next(800, 1200);
 						//Thread.Sleep(new Random().Next(500, 1000));
-						continue;
-					};
-					// attempt to buy product if there is enough money
-					if(Money > randomProduct.Price) {
+					} else if(Money < randomProduct.Price) {
+						_attempts++;
+						Printer.Print(String.Format("{0} tried to buy product {1}, but dint have enought money...  ", Name, randomProduct.Name), ConsoleColor.Gray);
+					} else {
+						// attempt to buy product if there is enough money
 						AttemptToBuyProduct(randomProduct);
 					}
 				}
+				Thread.Sleep(_sleepTime);
 			}
 			
 		}
