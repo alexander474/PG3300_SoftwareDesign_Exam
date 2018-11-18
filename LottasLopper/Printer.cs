@@ -10,7 +10,7 @@ namespace LottasLopper {
 		public static void Print(string text, ConsoleColor color) {
 			lock(_console) {
 			    try {
-				    Thread.Sleep(100);
+				    Thread.Sleep(20); //Delay printing to remove flickering in console
 			        Console.SetCursorPosition(0, _lastPos);
 			        Console.Write(new string(' ', Console.WindowWidth)); //Clear a single line in console
 			        Console.SetCursorPosition(0, _lastPos);
@@ -40,7 +40,7 @@ namespace LottasLopper {
 	            Stats.ItemsListed,
 	            Stats.TotalEarnings,
 	            Stats.SellersActive,
-	            Stats.BuyersActive
+	            Stats.CustomersActive
 	        ));
 
         }

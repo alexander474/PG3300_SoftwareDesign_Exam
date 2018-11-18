@@ -20,7 +20,7 @@ namespace LottasLopper {
 				lock(_lock) {
 					if(_attempts >= actions || Money < Settings.MinPrice) {
 						Printer.Print(String.Format("{0} couldn't find a product or was broke. {0} went home. Had ${1} left", Name, Money), ConsoleColor.DarkCyan);
-						Stats.BuyersActive--;
+						Stats.CustomersActive--;
 						running = false;
 						continue;
 					}

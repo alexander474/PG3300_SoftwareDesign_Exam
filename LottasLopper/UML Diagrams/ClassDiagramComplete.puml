@@ -1,0 +1,145 @@
+﻿@startuml
+
+
+skinparam roundcorner 20
+skinparam maxmessagesize 60
+
+namespace Fleemarket {
+	
+	class Program {
+		-{static} PersonFactory : _factory
+		{static} void : main()
+		- {static} void : StartCreatingSellers()
+		- {static} void : StartCreatingCustomers()
+	}
+	
+	
+	class PersonFactory {
+        + void : CreateSellers(int numberOfSellers)
+        + void : CreateCustomers(int numberOfCustomers)
+        - void : NewSeller()
+        - void : NewCustomer()
+	}
+
+	abstract class Person {
+        + string : Name
+        + int : Money
+        + Person(string : name, int : actions, int : money)
+        + abstract void : Action(int actions)
+	}
+
+	class Seller {
+        - {static}readonly object : _listLock
+        + Seller() : base()
+        + override void : Action(int actions)
+	}
+
+	class Customer {
+        - {static}readonly object : _listLock
+        - int : _sleepTime
+        - int : _attempts
+        + Customer() : base()
+        + override void : Action(int actions)
+        - void : AttemptToBuyProduct(IProduct randomProduct)
+	}
+	
+	class Printer {
+        - {static} readonly object : _console
+        - {static}int : _lastPos
+        + {static} void : Print(string : text, ConsoleColor : color)
+        - {static} void : PrintStats()
+	}
+
+	class Stats {
+        + {static} int : TotalEarnings
+        + {static} int : ItemsSold
+        + {static} int : ItemsListed
+        + {static} int : SellersActive
+        + {static} int : CustomersActive
+	}
+
+	class Settings {
+        + {static} int : SellerActions
+        + {static} int : CustomerActions
+        + {static} int : MaxPrice
+        + {static} int : MinPrice
+        + {static} int : MaxMoney
+        + {static} int : MinMoney
+        + {static} int : CustomerCount
+        + {static} int : SellerCount
+	}
+	
+	
+	class Product {
+        + string : Name
+        + int : Price
+        + List<string> : DecoratedWith
+        + Product(int price)
+        + string : GetProductName()
+        + int : GetPrice()
+	}
+	
+	interface IProduct {
+		+ string : Name
+		+ int : Price
+		+ List<string> : DecoratedWith
+	}
+	
+	class ProductController {
+        - {static} readonly object : _product
+        + {static} List<IProduct> : list
+        + {static} IProduct : GetRandomProduct
+        + void : AddToList(IProduct product)
+        + {static} bool : RemoveProduct(IProduct product)
+        - IProduct : DacorateProduct(IProduct product)
+        - bool IsDecoratedWith(IProduct product, string decorator)
+	}
+
+	abstract class ProductDecorator {
+		+ string : Name
+		+ int : Price
+		+ List<string> : DecoratedWith
+		+ ProductDecorator(IProduct product)
+	}
+	
+	class MaterialProductDecorator {
+		+ MaterialProductDecorator(IProduct product)
+	}
+
+	class ColoredProductDecorator {
+	    + ColoredProductDecorator(IProduct product)
+	}
+
+	class ImprovedProductDecorator {
+	    + ImprovedProductDecorator(IProduct product)
+	}
+    
+    
+    
+    Program --* PersonFactory
+    
+    Seller --|> Person
+    Customer --|> Person
+    
+    MaterialProductDecorator --|> ProductDecorator
+    ColoredProductDecorator --|> ProductDecorator
+    ImprovedProductDecorator --|> ProductDecorator
+    ProductDecorator --|> IProduct
+    
+    ProductController --* IProduct
+    
+    Product --|> IProduct
+    
+    PersonFactory --> Seller : Creates
+    PersonFactory --> Customer : Creates
+    
+    Seller --> ProductController
+    
+    Cusotmer --> Printer : Using
+    Seller --> Printer : Using
+    Program --> Printer : Using
+    
+    
+}
+
+@enduml

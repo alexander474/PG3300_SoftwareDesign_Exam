@@ -35,14 +35,9 @@ namespace LottasLopper {
 			get { return 50; }
 		}
 		public static int SellerCount {
-			get { return 200; }
+			get { return 20; }
 		}
 		#endregion
-
-
-		public static float WaitingScale {
-			get { return (float) (new Random().Next(75, 150) / 100); }
-		}
 
 	}
 }

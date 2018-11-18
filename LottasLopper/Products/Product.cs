@@ -13,11 +13,11 @@ namespace LottasLopper {
 			Price = price;
 		}
 
-		public string getProductName(){
+		public string GetProductName(){
 			return Name;
 		}
 
-		public int getPrice(){
+		public int GetPrice(){
 			return Price;
 		}
 	}
